@@ -1,0 +1,7 @@
+{
+  "name": "sololeveling teste 1",
+  "description": "Uma interface imersiva inspirada no sistema de Solo Leveling, com gerenciamento de status, quests diárias e integração com a IA do Sistema.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

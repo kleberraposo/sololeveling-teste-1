@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #020617;
+            color: #e2e8f0;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .system-border {
+            border: 1px solid rgba(0, 191, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.1);
+        }
+        .system-glow {
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
+        }
+        .system-gradient {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+        }
+        
+        /* Rank Specific Glows & Animations */
+        .rank-glow-E { text-shadow: 0 0 5px rgba(148, 163, 184, 0.3); }
+        
+        .rank-glow-D { 
+            text-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
+            animation: pulse-soft-green 3s infinite ease-in-out;
+        }
+        @keyframes pulse-soft-green {
+            0%, 100% { opacity: 0.8; text-shadow: 0 0 5px rgba(52, 211, 153, 0.3); }
+            50% { opacity: 1; text-shadow: 0 0 15px rgba(52, 211, 153, 0.6); }
+        }
+
+        .rank-glow-C { 
+            text-shadow: 0 0 12px rgba(14, 165, 233, 0.6);
+            animation: pulse-blue 2.5s infinite ease-in-out;
+        }
+        @keyframes pulse-blue {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 8px rgba(14, 165, 233, 0.4); }
+            50% { transform: scale(1.02); text-shadow: 0 0 20px rgba(14, 165, 233, 0.8); }
+        }
+
+        .rank-glow-B { 
+            text-shadow: 0 0 15px rgba(129, 140, 248, 0.7);
+            animation: pulse-indigo 2s infinite ease-in-out;
+        }
+        @keyframes pulse-indigo {
+            0%, 100% { text-shadow: 0 0 10px rgba(129, 140, 248, 0.5); }
+            50% { text-shadow: 0 0 25px rgba(129, 140, 248, 0.9); }
+        }
+
+        .rank-glow-A { 
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+            animation: burning-red 1.5s infinite alternate;
+        }
+        @keyframes burning-red {
+            from { text-shadow: 0 0 10px rgba(239, 68, 68, 0.6); filter: brightness(1); }
+            to { text-shadow: 0 0 30px rgba(239, 68, 68, 1), 0 0 10px rgba(239, 68, 68, 0.8); filter: brightness(1.2); }
+        }
+
+        .rank-glow-S { 
+            text-shadow: 0 0 25px rgba(251, 191, 36, 0.9), 0 0 50px rgba(251, 191, 36, 0.4);
+            animation: god-ray 2s infinite ease-in-out;
+            letter-spacing: 0.15em;
+        }
+        @keyframes god-ray {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 20px rgba(251, 191, 36, 0.8); }
+            50% { transform: scale(1.1); text-shadow: 0 0 40px rgba(251, 191, 36, 1), 0 0 60px rgba(251, 191, 36, 0.5); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0ea5e9;
+            border-radius: 10px;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
