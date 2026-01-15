@@ -28,7 +28,8 @@ import {
   Activity,
   CheckCircle,
   History,
-  RefreshCw
+  RefreshCw,
+  Beaker
 } from 'lucide-react';
 import { Player, Rank, Quest, Job, Title, Priority, Recurrence } from './types';
 import { SystemModal } from './components/SystemModal';
@@ -153,7 +154,7 @@ const App: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(86400); 
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [activeView, setActiveView] = useState<'home' | 'create' | 'settings' | 'progress' | 'completed'>('home');
+  const [activeView, setActiveView] = useState<'home' | 'create' | 'settings' | 'progress' | 'completed' | 'test'>('home');
   const [newName, setNewName] = useState("");
   const [newQuest, setNewQuest] = useState({ 
     name: "", 
@@ -396,7 +397,7 @@ const App: React.FC = () => {
     const quest: Quest = {
       id: 'protocol-' + Date.now(),
       name: newQuest.name,
-      target: 1, // Definido como 1 por padrão após remoção do campo de meta
+      target: 1, 
       current: 0,
       description: newQuest.description || "",
       priority: newQuest.priority,
@@ -456,8 +457,9 @@ const App: React.FC = () => {
             {[
               { id: 'home', icon: <LayoutDashboard size={16} />, label: 'Dashboard' },
               { id: 'progress', icon: <TrendingUp size={16} />, label: 'Progresso do Chamado' },
-              { id: 'completed', icon: <CheckCircle size={16} />, label: 'Missões Concluídas' },
+              { id: 'completed', icon: <History size={16} />, label: 'Missões Concluídas' },
               { id: 'create', icon: <PlusCircle size={16} />, label: 'Novo Protocolo' },
+              { id: 'test', icon: <Beaker size={16} />, label: 'Teste' },
               { id: 'settings', icon: <UserCircle size={16} />, label: 'Jogador' }
             ].map(item => (
               <button 
@@ -585,6 +587,41 @@ const App: React.FC = () => {
                   </div>
                 </section>
               </>
+            )}
+
+            {activeView === 'test' && (
+              <div className="animate-in fade-in slide-in-from-bottom duration-500 space-y-8">
+                <div className="flex items-center gap-3 mb-6">
+                   <div className="p-2 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400">
+                      <Beaker size={20} />
+                   </div>
+                   <h2 className="text-sm font-orbitron font-black text-white uppercase tracking-widest">Câmara de Teste do Sistema</h2>
+                </div>
+
+                <div className="bg-slate-900/30 p-8 rounded-2xl border border-sky-500/10 shadow-2xl relative overflow-hidden group min-h-[400px] flex flex-col items-center justify-center text-center">
+                   <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#0ea5e9 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                   
+                   <Activity size={48} className="text-sky-500 animate-pulse mb-6" />
+                   
+                   <h3 className="text-xl font-orbitron font-black text-sky-400 uppercase tracking-[0.3em] mb-4">Calibração de Sensores</h3>
+                   <p className="text-slate-400 text-xs font-rajdhani max-w-md uppercase tracking-widest leading-relaxed">
+                     O ambiente de teste está sendo sincronizado com os dados biométricos do jogador. Aguarde a finalização dos protocolos de diagnóstico.
+                   </p>
+
+                   <div className="mt-10 grid grid-cols-2 gap-4 w-full max-w-sm">
+                      <div className="p-4 border border-white/5 bg-slate-950/50 rounded-lg">
+                        <div className="text-[8px] font-orbitron font-black text-slate-600 uppercase mb-1">Status do Núcleo</div>
+                        <div className="text-[10px] font-orbitron font-bold text-emerald-400 uppercase">Estável</div>
+                      </div>
+                      <div className="p-4 border border-white/5 bg-slate-950/50 rounded-lg">
+                        <div className="text-[8px] font-orbitron font-black text-slate-600 uppercase mb-1">Sincronia IA</div>
+                        <div className="text-[10px] font-orbitron font-bold text-sky-400 uppercase">99.8%</div>
+                      </div>
+                   </div>
+
+                   <Sparkles size={100} className="absolute -left-10 -top-10 text-sky-500/5 rotate-45" />
+                </div>
+              </div>
             )}
 
             {activeView === 'progress' && (
@@ -825,7 +862,7 @@ const App: React.FC = () => {
                            <span className="text-white">{player.stats[stat.id as keyof Player['stats']]}/50</span>
                         </div>
                         <div className="h-1.5 bg-slate-950 rounded-full overflow-hidden shadow-inner">
-                           <div className="h-full bg-sky-500 transition-all duration-1000 shadow-[0_0_8px_#0ea5e9]" style={{ width: `${(player.stats[stat.id as keyof Player['stats']] / 50) * 100}%` }}></div>
+                           <div className="h-full bg-sky-500 transition-all duration-1000 shadow-[0_0_8px_#0ea5e9]" style={{ width: `${(player.stats[stat.id as keyof Player['stats'] ] / 50) * 100}%` }}></div>
                         </div>
                      </div>
                    ))}
